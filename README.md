@@ -7,7 +7,7 @@ Follow these instructions to get started working on the ground station software
 The following libraries must be installed and configured to build and deploy on your workstation
 
 #### Platform
-All instructions here assume the following to:
+All instructions here assume the following setup:
 
 1. Ubuntu 16.04 (http://releases.ubuntu.com/16.04/)
 2. Qt 5.7 (https://www.qt.io/qt5-7/)
