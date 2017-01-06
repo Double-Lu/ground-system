@@ -1,24 +1,15 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtMultimedia 5.0
-import CVCamera 1.0
 
 ApplicationWindow {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
+    title: qsTr("UAS Ground System")
     id: window
     RowLayout {
 
-    }
-
-    Label {
-        id:titleLabel
-        text: "UAS Ground System"
-        anchors.top: window.top
-        anchors.horizontalCenter: parent.horizontalCenter
     }
 
 
@@ -28,41 +19,14 @@ ApplicationWindow {
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        /*Page1 {
-        }*/
-
         CommandPage {
-
         }
 
-        Page {
-
-
-
-
-            CVCamera {
-                id: camera
-                device: deviceBox.currentIndex
-                size: "640x480"
-                anchors.centerIn: parent
-
-            }
-
-            VideoOutput {
-                anchors.top: imageSizeField.top
-                id: output
-                source: camera
-                anchors.centerIn: parent
-
-            }
-
+        MappingPage {
         }
 
-        Page {
-            Label {
-                text: qsTr("Machine Health Page")
-                anchors.centerIn: parent
-            }
+        MachineHealthPage {
+
         }
     }
 

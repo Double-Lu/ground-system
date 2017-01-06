@@ -6,7 +6,6 @@ Item {
     width: 400
     height: 400
     id:rootItem
-    property alias getMessageButton: getMessageButton
 
     RowLayout {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -23,21 +22,16 @@ Item {
             }
         }
         Label {
-            text: qsTr("Commands")
+            text: qsTr("Machine Health")
             anchors.centerIn: parent
         }
 
         Text {
             id: messageText
-            text: qsTr("nothing yet received")
+            text: qsTr("No machine data yet...")
             anchors.bottom: getMessageButton.top
         }
 
-        Button {
-            id: getMessageButton
-            text: qsTr("Send Command")
-            anchors.bottom: parent.bottom
-        }
     }
 
 }
