@@ -11,7 +11,6 @@ Item {
 
     RowLayout {
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: 20
         anchors.top: parent.top
 
 

@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.0
 Item {
     width: 400
     height: 400
+    property alias label: label
     id:rootItem
     property alias getMessageButton: getMessageButton
 
@@ -23,8 +24,10 @@ Item {
             }
         }
         Label {
+            id: label
             text: qsTr("Commands")
-            anchors.centerIn: parent
+            anchors.top: parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
         }
 
         Text {
