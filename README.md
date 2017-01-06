@@ -1,5 +1,4 @@
-# ground-system
-The complete UAS Ground System application
+# UAS Ground System
 
 ## Developer Installation
 Follow these instructions to get started working on the ground station software
