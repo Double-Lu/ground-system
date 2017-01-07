@@ -50,5 +50,6 @@ void ROSController::readPendingDatagrams()
                                &sender, &senderPort);
 
         printf("%s\n",datagram.data());
+        emit messageReceived("This is a blank message");
     }
 }

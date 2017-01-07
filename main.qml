@@ -4,32 +4,39 @@ import QtQuick.Layouts 1.0
 
 ApplicationWindow {
     visible: true
-    width: 640
-    height: 480
+    width: 1200
+    height: 900
     title: qsTr("UAS Ground System")
     id: window
-    RowLayout {
-
-    }
 
 
-    SwipeView {
-        id: swipeView
-        anchors.top: titleLabel.bottom
+    Rectangle {
+        width: 1200
+        height: 900
         anchors.fill: parent
-        currentIndex: tabBar.currentIndex
+        color: "#95a5a6"
 
-        CommandPage {
+
+        SwipeView {
+            id: swipeView
+            anchors.fill: parent
+            currentIndex: tabBar.currentIndex
+
+
+            CommandPage {
+
+            }
+
+            MappingPage {
+
+            }
+
+            MachineHealthPage {
+
+            }
         }
 
-        MappingPage {
-        }
-
-        MachineHealthPage {
-
-        }
     }
-
     footer: TabBar {
         id: tabBar
         currentIndex: swipeView.currentIndex

@@ -60,6 +60,7 @@ message("OpenCV path: $$OPENCV_PATH")
 message("Includes path: $$INCLUDEPATH")
 message("Libraries: $$LIBS")
 
-DISTFILES +=
+DISTFILES += \
+    indicator.png
 
 

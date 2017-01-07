@@ -8,5 +8,9 @@
         <file>MappingPageForm.ui.qml</file>
         <file>MachineHealthPage.qml</file>
         <file>MachineHealthPageForm.ui.qml</file>
+        <file>PayloadControls.qml</file>
+        <file>TargetTracking.qml</file>
+        <file>indicator.png</file>
+        <file>PayloadHealth.qml</file>
     </qresource>
 </RCC>
