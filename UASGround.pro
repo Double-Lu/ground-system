@@ -52,7 +52,8 @@ LIBS     += \
 
 INCLUDEPATH += \
     $$OPENCV_PATH/modules/core/include/ \ #core module
-    $$OPENCV_PATH/modules/highgui/include/ #highgui modul
+    $$OPENCV_PATH/modules/highgui/include/ \ #highgui modul
+    /opt/ros/kinetic/include/
 
 
 

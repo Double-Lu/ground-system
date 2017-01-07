@@ -24,10 +24,10 @@ Item {
             target: ROSController
 
 
-//            onMessageReceived: {
-//                messageText.text = message
+            onMessageReceived: {
+                messageText.text = message
 
-//            }
+            }
         }
         Rectangle {
             id:titleRect
@@ -102,6 +102,17 @@ Item {
                     id: payloadControlBtn
                     text: qsTr("Payload Control")
                     font.pointSize: 10
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Label {
+                    anchors.topMargin: 20
+                    width: 100
+                    height: 50
+                    id: messageText
+                    text: qsTr("No messages yet")
+                    font.pointSize: 10
+                    color: "yellow"
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 

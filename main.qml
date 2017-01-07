@@ -44,7 +44,7 @@ ApplicationWindow {
             text: qsTr("Command")
         }
         TabButton {
-            text: qsTr("Mapping")
+            text: qsTr("Environment")
         }
         TabButton {
             text: qsTr("Machine Health")
