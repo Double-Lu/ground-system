@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>CommandPage.qml</file>
+        <file>CommandPageForm.ui.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>MachineHealthPage.qml</file>
+        <file>MappingPage.qml</file>
+        <file>MachineHealthPageForm.ui.qml</file>
+        <file>MappingPageForm.ui.qml</file>
+    </qresource>
+</RCC>
