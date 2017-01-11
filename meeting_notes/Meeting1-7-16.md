@@ -37,7 +37,7 @@ Learned Qt front-end, integrated OpenCV and UDP communication in a Qt project
 * Jacky - Scaffold and populate rest of UI, design/build user experience
 * Maria - Integrate Gazebo simulation with our Qt GUI backend
 * Tyler - Work with all to integrate widgets, Gazebo, and OpenCV components/functions
-
+experience
 ### Major Goals for First Iteration
 
 * External camera feed detects and tracks objects

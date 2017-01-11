@@ -1,5 +1,7 @@
 #!/bin/bash
+UAS_GROUND_PATH = $(pwd)
 
+# install OpenCV
 sudo apt-get -y install libv4l-dev
 sudo apt-get -y update
 sudo apt-get -y upgrade
@@ -25,14 +27,17 @@ cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON 
 make -j4
 sudo make install
 sudo ldconfig
+
+# Special OpenCV build for QML-CVCamera plugin
 cd ../platforms
 mkdir build-desktop
 cd build-desktop
 cmake ../.. -DCMAKE_INSTALL_PREFIX=/usr -DWITH_GSTRAMER=OFF
-Fccmake ../.. 
 make -j 5
 make install
 cd ~
+
+# install QML-CVCamera plugin
 wget https://github.com/chili-epfl/qml-cvcamera/archive/master.zip
 unzip master.zip
 rm master.zip
@@ -43,3 +48,7 @@ cd build-desktop
 /qt/install/root/5.3/gcc_64/bin/qmake ..
 make -j 5
 make install
+
+# Fill out UASGround.pro with correct info
+cd $UAS_GROUND_PATH
+python configure_qt.py $(cd ~ && pwd)
