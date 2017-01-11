@@ -1,5 +1,6 @@
 #!/bin/bash
 UAS_GROUND_PATH = $(pwd)
+HOME_PATH = $(cd ~ && pwd)
 
 # install OpenCV
 sudo apt-get -y install libv4l-dev
@@ -16,6 +17,7 @@ sudo apt-get install -y python-dev python-tk python-numpy python3-dev python3-tk
 sudo apt-get install -y ant default-jdk
 sudo apt-get install -y doxygen
 sudo apt-get install -y unzip wget
+cd ~
 wget https://github.com/opencv/opencv/archive/3.2.0.zip
 unzip 3.2.0.zip
 rm 3.2.0.zip
@@ -34,7 +36,7 @@ mkdir build-desktop
 cd build-desktop
 cmake ../.. -DCMAKE_INSTALL_PREFIX=/usr -DWITH_GSTRAMER=OFF
 make -j 5
-make install
+sudo make install
 cd ~
 
 # install QML-CVCamera plugin
@@ -45,10 +47,14 @@ mv master qml-cvcamera
 cd qml-cvcamera
 mkdir build-desktop
 cd build-desktop
-/qt/install/root/5.3/gcc_64/bin/qmake ..
+$HOME_PATH/5.7/gcc_64/bin/qmake ..
 make -j 5
-make install
+sudo make install
 
 # Fill out UASGround.pro with correct info
 cd $UAS_GROUND_PATH
+if [ -f $UAS_GROUND_PATH/UASGround.pro ]
+	then
+		rm UASGround.pro
+fi
 python configure_qt.py $(cd ~ && pwd)
