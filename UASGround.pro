@@ -1,11 +1,10 @@
+
 QT += qml quick opengl multimedia
 
 CONFIG += c++11
 
-SOURCES += main.cpp \
-    roscontroller.cpp
-#    cqtopencvviewergl.cpp \
-#    listener.cpp
+SOURCES += main.cpp     roscontroller.cpp
+#    cqtopencvviewergl.cpp #    listener.cpp
 
 RESOURCES += qml.qrc
 
@@ -34,24 +33,17 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-HEADERS += \
-    roscontroller.h
+HEADERS +=     roscontroller.h
 
 
-OPENCV_PATH = /home/tyler/opencv-3.1.0
+OPENCV_PATH = /home/tyler/OpenCV/
 
-LIBS_PATH = /home/tyler/opencv-3.1.0/build/lib
+LIBS_PATH = /home/tyler/OpenCV/build/lib
 
-LIBS     += \
-    -L$$LIBS_PATH \
-    -lopencv_core \
-    -lopencv_highgui \
-    -lopencv_imgproc \
-    -lopencv_videoio
+LIBS     +=     -L$$LIBS_PATH     -lopencv_core     -lopencv_highgui     -lopencv_imgproc     -lopencv_videoio
 
 
-INCLUDEPATH += \
-    $$OPENCV_PATH/modules/core/include/ \ #core module
+INCLUDEPATH +=     $$OPENCV_PATH/modules/core/include/ \ #core module
     $$OPENCV_PATH/modules/highgui/include/ \ #highgui modul
     /opt/ros/kinetic/include/
 
@@ -61,7 +53,5 @@ message("OpenCV path: $$OPENCV_PATH")
 message("Includes path: $$INCLUDEPATH")
 message("Libraries: $$LIBS")
 
-DISTFILES += \
-    indicator.png
-
+DISTFILES +=     indicator.png
 

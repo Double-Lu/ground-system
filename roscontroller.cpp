@@ -39,10 +39,10 @@ void ROSController::getMessage()
 {
     emit messageReceived("This is a blank message");
 }
-void ROSController::handlePose(const turtlesim::PoseConstPtr&  rosMessage)
-{
-    emit messageReceived(QString::fromStdString( "This is a ROS message: {x=" + std::to_string(rosMessage->x) + ",y=" + std::to_string(rosMessage->y) + "}"));
-}
+//void ROSController::handlePose(const turtlesim::PoseConstPtr&  rosMessage)
+//{
+//    emit messageReceived(QString::fromStdString( "This is a ROS message: {x=" + std::to_string(rosMessage->x) + ",y=" + std::to_string(rosMessage->y) + "}"));
+//}
 
 void ROSController::initSocket()
 {

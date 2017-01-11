@@ -3,9 +3,9 @@
 
 #include <QObject>
 #include <QUdpSocket>
-#include <ros/ros.h>
-#include <ros/roscpp_serialization_macros.h>
-#include <turtlesim/Pose.h>
+//#include <ros/ros.h>
+//#include <ros/roscpp_serialization_macros.h>
+//#include <turtlesim/Pose.h>
 
 
 class ROSController : public QObject
@@ -15,7 +15,7 @@ public:
     explicit ROSController( QObject * parent = 0 );
     ~ROSController();
     Q_INVOKABLE void getMessage();
-    void handlePose(const turtlesim::PoseConstPtr& rosMessage);
+    //void handlePose(const turtlesim::PoseConstPtr& rosMessage);
     void initSocket();
     void readPendingDatagrams();
     void startListening();

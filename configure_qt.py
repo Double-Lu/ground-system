@@ -39,9 +39,9 @@ HEADERS += \
     roscontroller.h
 
 
-OPENCV_PATH = {0}/OpenCV/
+OPENCV_PATH = {0}/OpenCV
 
-LIBS_PATH = {0}/OpenCV//build/lib
+LIBS_PATH = {0}/OpenCV/build/lib
 
 LIBS     += \
     -L$$LIBS_PATH \

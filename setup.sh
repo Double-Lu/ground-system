@@ -1,6 +1,6 @@
 #!/bin/bash
-UAS_GROUND_PATH = $(pwd)
-HOME_PATH = $(cd ~ && pwd)
+UAS_GROUND_PATH=$(pwd)
+HOME_PATH=$(cd ~ && pwd)
 
 # install OpenCV
 sudo apt-get -y install libv4l-dev
@@ -43,7 +43,7 @@ cd ~
 wget https://github.com/chili-epfl/qml-cvcamera/archive/master.zip
 unzip master.zip
 rm master.zip
-mv master qml-cvcamera
+mv qml-cvcamera-master qml-cvcamera
 cd qml-cvcamera
 mkdir build-desktop
 cd build-desktop
