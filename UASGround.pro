@@ -1,5 +1,5 @@
 
-QT += qml quick opengl multimedia
+QT += qml quick opengl multimedia network
 
 CONFIG += c++11
 
@@ -36,7 +36,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS +=     roscontroller.h
 
 
-OPENCV_PATH = /home/tyler/OpenCV/
+OPENCV_PATH = /home/tyler/OpenCV
 
 LIBS_PATH = /home/tyler/OpenCV/build/lib
 

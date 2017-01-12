@@ -54,12 +54,20 @@ Item {
             }
 
             VideoOutput {
-                anchors.top: imageSizeField.top
+                anchors.top: camera.top
                 id: output
                 source: camera
                 anchors.centerIn: parent
 
             }
+            ComboBox {
+                id: deviceBox
+                width: 200
+                anchors.top: output.bottom
+                anchors.horizontalCenter: output.horizontalCenter
+                model: camera.deviceList
+            }
+
 
         }
 

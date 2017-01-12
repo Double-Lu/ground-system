@@ -1,6 +1,8 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
+import QtQuick.Controls.Styles 1.4
+import QtQuick.Extras 1.4
 
 Item {
     width: 1200
@@ -8,6 +10,7 @@ Item {
     id: rootItem
     property alias payloadHealth1Btn: payloadHealth1Btn
     property alias rootLayout: rootLayout
+    property alias fuelGauge: fuelGauge
 
     ColumnLayout {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -80,13 +83,13 @@ Item {
                     }
                 }
 
-                Image {
-                    id: image
-                    x: 250
-                    y: 233
-                    width: 100
-                    height: 100
-                    source: "indicator.png"
+                Gauge {
+                    minimumValue: 0
+                    value: 50
+                    maximumValue: 100
+                    anchors.centerIn: parent
+                    id: fuelGauge
+
                 }
             }
             Rectangle {

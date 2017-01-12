@@ -18,6 +18,7 @@ void ROSController::startListening()
 
 ROSController::ROSController(QObject * parent) : QObject(parent)
 {
+    //qDebug() << "I'm in ROSController ctor!";
 
 //    ros::NodeHandle node;
 
@@ -27,12 +28,13 @@ ROSController::ROSController(QObject * parent) : QObject(parent)
     udpSocket->bind(QHostAddress::LocalHost, 7755);
 
     connect(udpSocket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+    qDebug() << "Socket is live...";
 
 }
 
 ROSController::~ROSController()
 {
-
+   udpSocket->close();
 }
 
 void ROSController::getMessage()
@@ -44,18 +46,10 @@ void ROSController::getMessage()
 //    emit messageReceived(QString::fromStdString( "This is a ROS message: {x=" + std::to_string(rosMessage->x) + ",y=" + std::to_string(rosMessage->y) + "}"));
 //}
 
-void ROSController::initSocket()
-{
-    udpSocket = new QUdpSocket(this);
-    udpSocket->bind(QHostAddress::LocalHost, 7755);
-
-    connect(udpSocket, SIGNAL(readyRead()),
-            this, SLOT(readPendingDatagrams()));
-}
 
 void ROSController::readyRead()
 {
-    emit messageReceived("About to read data");
+    //qDebug() << "In readyRead()...";
     // when data comes in
     QByteArray buffer;
     buffer.resize(udpSocket->pendingDatagramSize());
@@ -65,6 +59,7 @@ void ROSController::readyRead()
 
     udpSocket->readDatagram(buffer.data(), buffer.size(), &sender, &senderPort);
 
+    //qDebug() << "I received " << buffer;
     emit messageReceived("Current position: " + buffer);
 }
 
