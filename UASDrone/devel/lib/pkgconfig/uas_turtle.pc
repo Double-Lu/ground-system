@@ -1,0 +1,8 @@
+prefix=/home/tyler/drone_controller/devel
+
+Name: uas_turtle
+Description: Description of uas_turtle
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/tyler/drone_controller/devel/lib 
+Requires: 

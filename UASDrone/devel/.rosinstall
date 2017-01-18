@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/tyler/drone_controller/devel/setup.sh
