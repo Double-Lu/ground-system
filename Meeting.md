@@ -25,13 +25,15 @@
 * Add controls to UI for overlays 
 ## Other
 
-### Other
+## Other
 
-#### Our Goals
+### Our Goals
 
-##### Primary goal
+#### Primary goal
 Leave a path forward for implementations and extensions for all desired features
-##### Minimum devliverables
+
+
+#### Minimum devliverables
 Implement at least one example of:
 * a sensor-driven camera view
 * a *meaningful* sensor-driven display widget
