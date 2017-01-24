@@ -18,9 +18,9 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("ROSController", &rosController);
 
-//    cv::Mat toDisplay(cv::Size(800, 600), CV_8UC3, cv::Scalar(50, 200, 50));
-//    cv::imshow("Test", toDisplay);
-//    cv::waitKey();
+    /*cv::Mat toDisplay(cv::Size(800, 600), CV_8UC3, cv::Scalar(50, 200, 50));
+    cv::imshow("Test", toDisplay);
+    cv::waitKey();*/
 
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
 

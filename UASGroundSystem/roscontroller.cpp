@@ -83,6 +83,7 @@ void ROSController::readyRead()
     udpSocket->readDatagram(buffer.data(), buffer.size(), &sender, &senderPort);
 
     //qDebug() << "I received " << buffer;
+
     emit messageReceived(buffer);
 }
 

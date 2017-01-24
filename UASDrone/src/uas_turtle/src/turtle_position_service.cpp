@@ -17,6 +17,8 @@
 #include <signal.h>
 #include <sys/wait.h>
 #include <pthread.h>
+#include <gazebo_msgs/SetModelState.h>
+#include <gazebo_msgs/GetModelState.h>
 #include "turtle_position_service.h"
 
 #define BACKLOG 10     // how many pending connections queue will hold
@@ -34,7 +36,7 @@ int numbytes;
 double current_x_goal = 0.0, current_y_goal = 0.0;
 
 
-double prev_x = 0.0, prev_y = 0.0, prev_theta = 0.0;
+double prev_x = 0.0, prev_y = 0.0, prev_theta = 0.0, prev_z = 0.0;
 
 
 geometry_msgs::Twist vel_msg;
@@ -49,10 +51,16 @@ char s[INET6_ADDRSTRLEN];
 int listener_rv;
 bool STOP = false;
 
+double r = 0.0;
+double delta_theta = 0.0;
 
 pthread_t * command_listener_thread;
 
 
+double current_r = 0.0;
+double new_x_goal = 0.0;
+double new_y_goal = 0.0;
+double new_z_goal = 0.0;
 
 
 // get sockaddr, IPv4 or IPv6:
@@ -65,7 +73,47 @@ pthread_t * command_listener_thread;
     return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }*/
 
-int run_server(void)
+gazebo_msgs::ModelState get_coke_message(double x, double y, double z){
+    std::string val = "";
+
+
+    geometry_msgs::Pose start_pose;
+    start_pose.position.x = 0.0;
+    start_pose.position.y = 0.0;
+    start_pose.position.z = 0.1;
+    start_pose.orientation.x = 0.0;
+    start_pose.orientation.y = 0.0;
+    start_pose.orientation.z = 0.0;
+    start_pose.orientation.w = 0.0;
+
+    geometry_msgs::Twist start_twist;
+    start_twist.linear.x = x;
+    start_twist.linear.y = y;
+    start_twist.linear.z = z;
+    start_twist.angular.x = x;
+    start_twist.angular.y = y;
+    start_twist.angular.z = z;
+
+
+    gazebo_msgs::ModelState modelstate;
+    modelstate.model_name = (std::string) "quadrotor";
+    modelstate.reference_frame = (std::string) "world";
+    modelstate.pose = start_pose;
+    modelstate.twist = start_twist;
+
+    return modelstate;
+
+
+
+}
+
+void sendModelState(ros::ServiceClient * modelStateService, gazebo_msgs::ModelState * modelState){
+    gazebo_msgs::SetModelState setmodelstate;
+    setmodelstate.request.model_state = *modelState;
+    modelStateService->call(setmodelstate);
+}
+
+int run_server(ros::ServiceClient * client)
 {
     fd_set master;    // master file descriptor list
     fd_set read_fds;  // temp file descriptor list for select()
@@ -83,7 +131,6 @@ int run_server(void)
 
     int yes=1;        // for setsockopt() SO_REUSEADDR, below
     int i, j, rv;
-
     struct addrinfo hints, *ai, *p;
 
     FD_ZERO(&master);    // clear the master and temp sets
@@ -184,41 +231,41 @@ int run_server(void)
                         // we got some data from a client
                         printf("Just received %s\n", buf);
                         std::string x_str = "", y_str = "";
-                        bool reading_x = true, done = false;
-                        for(int k = 0; k < sizeof(buf)/sizeof(buf[0]) && !done; k++){
+                        std::string comp_strs[3];
+                        for(int i = 0; i < 3; i++){
+                            comp_strs[i] = "";
+                        }
+                        int reading = 0;
+                        for(int k = 0; k < sizeof(buf)/sizeof(buf[0]); k++){
                             char cur = buf[k];
-                            if(cur == ','){
-                                reading_x = false;
-                                continue;
-                            }
                             if(cur == '('){
                                 continue;
                             }
                             if(cur == ')'){
-                                done = true;
                                 break;
                             }
-                            if(reading_x){
-                                x_str.append(&cur);
-                                printf("adding %c to x_str...\n", cur);
-                            } else {
-                                y_str.append(&cur);
-                                printf("adding %c to y_str...\n", cur);
-                            }
+                            comp_strs[reading].append(&cur);
+                            printf("adding %c to component %d...\n", cur, reading);
 
                         }
 
-                        /*vel_msg.angular.z = vel_msg.angular.z > 0 ? 0.0 : 4.0;
+                        /*
+                            vel_msg.angular.z = vel_msg.angular.z > 0 ? 0.0 : 4.0;
+                        */
+
+                        new_x_goal = atof(comp_strs[0].c_str());
+                        new_y_goal = atof(comp_strs[1].c_str());
+                        new_z_goal = atof(comp_strs[2].c_str());
+                        double delta_x, delta_y, local_theta;
+
+                        gazebo_msgs::ModelState state = get_coke_message(new_x_goal,new_y_goal,new_z_goal);
+
+                        sendModelState(client, &state);
 
 
-*/
-                        printf("I read x: %s, and y: %s\n", x_str.c_str(), y_str.c_str());
-                        vel_msg.linear.x = vel_msg.linear.x > 0 ? 0.0 : 0.5;
-
-                        double new_x_goal = atof(x_str.c_str());
-                        double new_y_goal = atof(y_str.c_str());
-
-                        printf("I have a new_x_goal %f and a new_y_goal: %f\n", new_x_goal, new_y_goal);
+                        
+                        printf("I have a new_x_goal %f and a new_y_goal: %f, new_z_goal: %f\n", new_x_goal, new_y_goal, new_z_goal);
+                        printf("I have a prev_x %f and a prev_y: %f and a prev_theta %f\n", prev_x, prev_y, prev_theta);
                         if (send(i, buf, nbytes, 0) == -1) {
                             perror("send");
                         }
@@ -243,108 +290,10 @@ void sigchld_handler(int s)
 
 
 void * command_listener_routine(void * arg){
-    run_server();
+    ros::ServiceClient * client = (ros::ServiceClient * )arg;
+    run_server(client);
     exit(0);
 }
-/*void * command_listener_routine(void * arg){
-
-    printf("in command_listener_routine....\n");
-
-    memset(&listener_hints, 0, sizeof listener_hints);
-    listener_hints.ai_family = AF_UNSPEC;
-    listener_hints.ai_socktype = SOCK_STREAM;
-    listener_hints.ai_flags = AI_PASSIVE; // use my Ilistener_p
-    if ((listener_rv = getaddrinfo(NULL, COMMAND_PORT, &listener_hints, &listener_servinfo)) != 0) {
-        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(listener_rv));
-        return NULL;
-    }
-
-    // loolistener_pthrough all the results and bind to the first we can
-    for(listener_p= listener_servinfo; listener_p!= NULL; listener_p= listener_p->ai_next) {
-        if ((listener_sockfd = socket(listener_p->ai_family, listener_p->ai_socktype,
-                listener_p->ai_protocol)) == -1) {
-            perror("server: socket");
-            continue;
-        }
-
-        if (setsockopt(listener_sockfd, SOL_SOCKET, SO_REUSEADDR, &yes,
-                sizeof(int)) == -1) {
-            perror("setsockopt");
-            exit(1);
-        }
-
-        if (bind(listener_sockfd, listener_p->ai_addr, listener_p->ai_addrlen) == -1) {
-            close(listener_sockfd);
-            perror("server: bind");
-            continue;
-        }
-
-        break;
-    }
-    printf("done binding TCP socket\n");
-
-    freeaddrinfo(listener_servinfo); // all done with this structure
-
-    if (listener_p== NULL)  {
-        fprintf(stderr, "server: failed to bind\n");
-        exit(1);
-    }
-
-    if (listen(listener_sockfd, BACKLOG) == -1) {
-        perror("listen");
-        exit(1);
-    }
-
-    sa.sa_handler = sigchld_handler; // realistener_pall dead processes
-    sigemptyset(&sa.sa_mask);
-    sa.sa_flags = SA_RESTART;
-    if (sigaction(SIGCHLD, &sa, NULL) == -1) {
-        perror("sigaction");
-        exit(1);
-    }
-
-
-   
-    printf("server: waiting for connections...\n"); 
-
-
-    while(1) { // main accept() loolistener_p        sin_size = sizeof their_addr;
-        new_fd = accept(listener_sockfd, (struct sockaddr *)&their_addr, &sin_size);
-        if (new_fd == -1) {
-            perror("accept");
-            exit(0);
-        }
-
-        inet_ntop(their_addr.ss_family,
-            get_in_addr((struct sockaddr *)&their_addr),
-            s, sizeof s);
-
-        printf("server: got connection from %s\n", s);
-        char buf[512];
-        int byte_count;
-        while (byte_count > 0){
-            byte_count = recv(listener_sockfd, buf, sizeof(buf), 0); 
-            printf("Received command: %s which had %d bytes\n", buf, byte_count);
-
-        }
-        if(byte_count < 0){
-
- 
-        }
-
-        vel_msg.angular.z = vel_msg.angular.z > 0 ? 0.0 : 4.0;
-        vel_msg.linear.x = vel_msg.linear.x > 0 ? 0.0 : 0.5;
-
-
-
-
-        close(new_fd);  // parent doesn't need this
-
-    }
-	exit(0);
-
-}*/
-
 
 std::string turtle_name;
 
@@ -352,8 +301,8 @@ std::string turtle_name;
 void positionReported(const turtlesim::PoseConstPtr& msg){
 
 	std::ostringstream myString;
-	myString << "" << msg->x << "," << msg->y << "";
-    if(msg->x != prev_x || msg->y != prev_y){
+	myString << "" << msg->x << "," << msg->y << "," << msg->theta;
+    if(msg->x != prev_x || msg->y != prev_y || msg->theta != prev_theta){
 
         std::string position = myString.str();
         //printf("looking at message: %s\n", position.c_str());
@@ -369,9 +318,27 @@ void positionReported(const turtlesim::PoseConstPtr& msg){
         }
 
     }
+
+    if(abs(current_r - r) < 0.001){
+        vel_msg.linear.x = 0.0;
+    }
+    if(abs(msg->theta - delta_theta) < 0.001){
+        vel_msg.angular.z = 0.0;
+        if(current_r < r){
+
+            vel_msg.linear.x = -2.0;
+        } else if(current_r > r){
+            vel_msg.linear.x = 2.0;
+        }
+    }
     prev_x = msg->x;
     prev_y = msg->y;
     prev_theta = msg->theta;
+
+}
+
+void modelStateReported()
+{
 
 }
 
@@ -419,8 +386,25 @@ int main(int argc, char ** argv){
 	if (argc != 2){ROS_ERROR("need turtle name as argument"); return -1;};
 
 	turtle_name = argv[1];
-	ros::Subscriber sub = node.subscribe(turtle_name+"/pose", 10, &positionReported);
+    //ros::Subscriber sub = node.subscribe(turtle_name+"/pose", 10, &positionReported);
+    ros::Subscriber sub = node.subscribe("/pose", 10, &positionReported);
     ros::Publisher pub = node.advertise<geometry_msgs::Twist>(turtle_name + "/cmd_vel", 100);
+
+    //gazebo/get_model_state '{model_name: coke_can}'
+
+    ros::ServiceClient modelStateService = node.serviceClient<gazebo_msgs::SetModelState>("/gazebo/set_model_state");
+    ros::ServiceClient modelStateGetterService = node.serviceClient<gazebo_msgs::GetModelState>("/gazebo/get_model_state");
+    gazebo_msgs::GetModelState getModelState;
+    getModelState.request.model_name = "quadrotor";
+    getModelState.request.relative_entity_name = "world";
+
+
+/*
+    gazebo::SetModelState setmodelstate;
+    setmodelstate.request.model_state = get_coke_message();
+    modelStateService.call(setmodelstate);
+*/
+
 
     printf("done setting subs and pubs\n");
 
@@ -429,7 +413,7 @@ int main(int argc, char ** argv){
     printf("Ready to send position commands");                        // let user know we are ready and good
 
 
-    pthread_create(command_listener_thread, NULL, command_listener_routine, NULL);
+    pthread_create(command_listener_thread, NULL, command_listener_routine, (void*)(&modelStateService));
     printf("finished dispatching listener thread\n");
 
     while (ros::ok() && node.ok() )                                        // while ros and the node are ok
@@ -439,6 +423,47 @@ int main(int argc, char ** argv){
         {
             //printf("Processing...\n");
             pub.publish(vel_msg);
+            modelStateGetterService.call(getModelState);
+            printf("modelStateGetterService returned (%f, %f, %f)\n", 
+                getModelState.response.pose.position.x,
+                getModelState.response.pose.position.y,
+                getModelState.response.pose.position.z
+            );
+
+
+
+            if( getModelState.response.pose.position.x != prev_x ||
+                getModelState.response.pose.position.y != prev_y ||
+                getModelState.response.pose.position.z != prev_z ){
+
+                std::ostringstream myString;
+                myString << "" << getModelState.response.pose.position.x << "," 
+                    << getModelState.response.pose.position.y << "," 
+                    << getModelState.response.pose.position.z;
+
+                std::string position = myString.str();
+                //printf("looking at message: %s\n", position.c_str());
+
+                if ((numbytes = sendto(sockfd, position.c_str(), strlen(position.c_str()), 0,
+                         p->ai_addr, p->ai_addrlen)) == -1) {
+                    printf("packet error!\n");
+                    perror("talker: sendto");
+                    exit(1);
+                }
+                else {
+                    //printf("sent packet!\n");
+                }
+
+                prev_x = getModelState.response.pose.position.x;
+                prev_y = getModelState.response.pose.position.y;
+                prev_z = getModelState.response.pose.position.z;
+
+
+
+            }
+
+
+
         }
         else
         {

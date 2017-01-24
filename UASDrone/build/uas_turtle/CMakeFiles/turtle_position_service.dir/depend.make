@@ -5,7 +5,17 @@ uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cp
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /home/tyler/drone_controller/src/uas_turtle/src/turtle_position_service.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/XmlRpcDecl.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/XmlRpcValue.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/gazebo_msgs/GetModelState.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/gazebo_msgs/GetModelStateRequest.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/gazebo_msgs/GetModelStateResponse.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/gazebo_msgs/ModelState.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/gazebo_msgs/SetModelState.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/gazebo_msgs/SetModelStateRequest.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/gazebo_msgs/SetModelStateResponse.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Point.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Pose.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Pose2D.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Twist.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Vector3.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/ros/advertise_options.h
@@ -62,6 +72,7 @@ uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cp
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/ros/wall_timer.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/ros/wall_timer_options.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/rosconsole/macros_generated.h
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/std_msgs/Header.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/turtlesim/Pose.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/turtlesim/Spawn.h
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /opt/ros/kinetic/include/turtlesim/SpawnRequest.h

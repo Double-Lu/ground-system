@@ -7,6 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export LD_LIBRARY_PATH="/opt/ros/kinetic/lib"
-export PKG_CONFIG_PATH="/opt/ros/kinetic/lib/pkgconfig"
+export CMAKE_PREFIX_PATH="/home/tyler/drone_controller/devel:$CMAKE_PREFIX_PATH"
 export PWD="/home/tyler/drone_controller/build"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/tyler/drone_controller/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/home/tyler/drone_controller/src:$ROS_PACKAGE_PATH"

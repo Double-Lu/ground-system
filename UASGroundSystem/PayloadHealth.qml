@@ -12,6 +12,25 @@ Item {
         visible: true
         title: "Payload Health"
 
+        Connections {
+            target: ROSController
+
+
+            onMessageReceived: {
+                console.log('in PayloadHealth onMessageReceived...');
+                var messagePieces = message.split(',');
+                var x = parseFloat(messagePieces[0]);
+                var y = parseFloat(messagePieces[1]);
+                var z = parseFloat(messagePieces[2]);
+
+                console.log('I parsed ' + x + ', ' + y + ', ' + z + ' from ' + message);
+                //messageText.text = message
+                testGauge.value = x * 10.0;
+
+
+            }
+        }
+
         contentItem: Rectangle {
             color: "grey"
             implicitWidth: 600
@@ -27,6 +46,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
                 CircularGauge {
+                    id: testGauge
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     Behavior on value {

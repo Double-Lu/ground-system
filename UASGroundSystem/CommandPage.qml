@@ -25,6 +25,7 @@ Item {
             onMessageReceived: {
                 messageText.text = message
 
+
             }
         }
         Rectangle {
@@ -95,6 +96,7 @@ Item {
                         var component = Qt.createComponent("TargetTracking.qml");
                         var ttView = component.createObject(rootLayout, {"x": 600, "y": 400});
 
+
                     }
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
@@ -130,10 +132,11 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: messageText.bottom
                     anchors.topMargin: 30
-                    height: 200
+                    id: commandRect
+                    height: 400
                     width: 400
-                    color: "white"
-
+                    color: "green"
+/*
                     Button {
                         anchors.top: parent.top
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -141,7 +144,7 @@ Item {
 
                         onClicked: {
 
-                            ROSController.sendCommand("(4.7,5.3)");
+                            ROSController.sendCommand("(4.763f,5.3675f)");
 
                         }
                     }
@@ -165,7 +168,23 @@ Item {
                         text: qsTr("Down")
 
                     }
+*/
 
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            var my_x = mouse.x * 0.025;
+                            var my_y = 10.0 - (mouse.y * 0.025);
+                            testLbl.text = qsTr("x: " + my_x + ", y:"+my_y);
+                            ROSController.sendCommand("("+my_x+","+my_y+",3.82342)");
+                        }
+                    }
+                }
+                Label {
+                    anchors.top: commandRect.bottom
+                    color: "yellow"
+                    id:testLbl
+                    text: "no coords yet"
                 }
 
             }

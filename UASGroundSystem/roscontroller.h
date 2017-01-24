@@ -22,6 +22,7 @@ public:
     void initSocket();
     void readPendingDatagrams();
     void startListening();
+    void myFunc();
 
 
 private:
