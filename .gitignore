@@ -1,4 +1,8 @@
 UASDrone/build
 UASDrone/devel
 UASDrone/src/CMakeLists.txt
+UASGroundSystem/Makefile
+UASGroundSystem/UASGroundSystem
+UASGroundSystem/moc*
+UASGroundSystem/qrc_qml.cpp
 
