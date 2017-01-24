@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tyler/drone_controller/src
+CMAKE_SOURCE_DIR = /home/tyler/ground-system/UASDrone/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tyler/drone_controller/build
+CMAKE_BINARY_DIR = /home/tyler/ground-system/UASDrone/build
 
 # Utility rule file for std_msgs_generate_messages_lisp.
 
@@ -63,10 +63,10 @@ uas_turtle/CMakeFiles/std_msgs_generate_messages_lisp.dir/build: std_msgs_genera
 .PHONY : uas_turtle/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 
 uas_turtle/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
-	cd /home/tyler/drone_controller/build/uas_turtle && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_lisp.dir/cmake_clean.cmake
+	cd /home/tyler/ground-system/UASDrone/build/uas_turtle && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_lisp.dir/cmake_clean.cmake
 .PHONY : uas_turtle/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 
 uas_turtle/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend:
-	cd /home/tyler/drone_controller/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tyler/drone_controller/src /home/tyler/drone_controller/src/uas_turtle /home/tyler/drone_controller/build /home/tyler/drone_controller/build/uas_turtle /home/tyler/drone_controller/build/uas_turtle/CMakeFiles/std_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tyler/ground-system/UASDrone/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tyler/ground-system/UASDrone/src /home/tyler/ground-system/UASDrone/src/uas_turtle /home/tyler/ground-system/UASDrone/build /home/tyler/ground-system/UASDrone/build/uas_turtle /home/tyler/ground-system/UASDrone/build/uas_turtle/CMakeFiles/std_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : uas_turtle/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
 

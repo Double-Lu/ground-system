@@ -1,2 +1,2 @@
 uas_turtle
--DCATKIN_DEVEL_PREFIX=/home/tyler/drone_controller/devel -DCMAKE_INSTALL_PREFIX=/home/tyler/drone_controller/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/tyler/ground-system/UASDrone/devel -DCMAKE_INSTALL_PREFIX=/home/tyler/ground-system/UASDrone/install -G Unix Makefiles

@@ -424,11 +424,11 @@ int main(int argc, char ** argv){
             //printf("Processing...\n");
             pub.publish(vel_msg);
             modelStateGetterService.call(getModelState);
-            printf("modelStateGetterService returned (%f, %f, %f)\n", 
+            /*printf("modelStateGetterService returned (%f, %f, %f)\n", 
                 getModelState.response.pose.position.x,
                 getModelState.response.pose.position.y,
                 getModelState.response.pose.position.z
-            );
+            );*/
 
 
 

@@ -1,8 +1,8 @@
-prefix=/home/tyler/drone_controller/install
+prefix=/home/tyler/ground-system/UASDrone/install
 
 Name: uas_turtle
 Description: Description of uas_turtle
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/tyler/drone_controller/install/lib 
+Libs: -L/home/tyler/ground-system/UASDrone/install/lib 
 Requires: 

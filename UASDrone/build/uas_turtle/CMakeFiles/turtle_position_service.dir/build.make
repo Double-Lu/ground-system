@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tyler/drone_controller/src
+CMAKE_SOURCE_DIR = /home/tyler/ground-system/UASDrone/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tyler/drone_controller/build
+CMAKE_BINARY_DIR = /home/tyler/ground-system/UASDrone/build
 
 # Include any dependencies generated for this target.
 include uas_turtle/CMakeFiles/turtle_position_service.dir/depend.make
@@ -58,17 +58,17 @@ include uas_turtle/CMakeFiles/turtle_position_service.dir/progress.make
 include uas_turtle/CMakeFiles/turtle_position_service.dir/flags.make
 
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: uas_turtle/CMakeFiles/turtle_position_service.dir/flags.make
-uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /home/tyler/drone_controller/src/uas_turtle/src/turtle_position_service.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tyler/drone_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o"
-	cd /home/tyler/drone_controller/build/uas_turtle && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o -c /home/tyler/drone_controller/src/uas_turtle/src/turtle_position_service.cpp
+uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o: /home/tyler/ground-system/UASDrone/src/uas_turtle/src/turtle_position_service.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tyler/ground-system/UASDrone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o"
+	cd /home/tyler/ground-system/UASDrone/build/uas_turtle && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o -c /home/tyler/ground-system/UASDrone/src/uas_turtle/src/turtle_position_service.cpp
 
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.i"
-	cd /home/tyler/drone_controller/build/uas_turtle && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tyler/drone_controller/src/uas_turtle/src/turtle_position_service.cpp > CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.i
+	cd /home/tyler/ground-system/UASDrone/build/uas_turtle && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tyler/ground-system/UASDrone/src/uas_turtle/src/turtle_position_service.cpp > CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.i
 
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.s"
-	cd /home/tyler/drone_controller/build/uas_turtle && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tyler/drone_controller/src/uas_turtle/src/turtle_position_service.cpp -o CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.s
+	cd /home/tyler/ground-system/UASDrone/build/uas_turtle && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tyler/ground-system/UASDrone/src/uas_turtle/src/turtle_position_service.cpp -o CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.s
 
 uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o.requires:
 
@@ -88,38 +88,38 @@ turtle_position_service_OBJECTS = \
 # External object files for target turtle_position_service
 turtle_position_service_EXTERNAL_OBJECTS =
 
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: uas_turtle/CMakeFiles/turtle_position_service.dir/build.make
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libtf.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libtf2_ros.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libactionlib.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libmessage_filters.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libroscpp.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libxmlrpcpp.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libtf2.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/librosconsole.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libroscpp_serialization.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/librostime.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libcpp_common.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service: uas_turtle/CMakeFiles/turtle_position_service.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tyler/drone_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service"
-	cd /home/tyler/drone_controller/build/uas_turtle && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/turtle_position_service.dir/link.txt --verbose=$(VERBOSE)
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: uas_turtle/CMakeFiles/turtle_position_service.dir/src/turtle_position_service.cpp.o
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: uas_turtle/CMakeFiles/turtle_position_service.dir/build.make
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libtf.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libtf2_ros.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libactionlib.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libmessage_filters.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libroscpp.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libtf2.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/librosconsole.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libroscpp_serialization.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/librostime.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /opt/ros/kinetic/lib/libcpp_common.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service: uas_turtle/CMakeFiles/turtle_position_service.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tyler/ground-system/UASDrone/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service"
+	cd /home/tyler/ground-system/UASDrone/build/uas_turtle && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/turtle_position_service.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-uas_turtle/CMakeFiles/turtle_position_service.dir/build: /home/tyler/drone_controller/devel/lib/uas_turtle/turtle_position_service
+uas_turtle/CMakeFiles/turtle_position_service.dir/build: /home/tyler/ground-system/UASDrone/devel/lib/uas_turtle/turtle_position_service
 
 .PHONY : uas_turtle/CMakeFiles/turtle_position_service.dir/build
 
@@ -128,10 +128,10 @@ uas_turtle/CMakeFiles/turtle_position_service.dir/requires: uas_turtle/CMakeFile
 .PHONY : uas_turtle/CMakeFiles/turtle_position_service.dir/requires
 
 uas_turtle/CMakeFiles/turtle_position_service.dir/clean:
-	cd /home/tyler/drone_controller/build/uas_turtle && $(CMAKE_COMMAND) -P CMakeFiles/turtle_position_service.dir/cmake_clean.cmake
+	cd /home/tyler/ground-system/UASDrone/build/uas_turtle && $(CMAKE_COMMAND) -P CMakeFiles/turtle_position_service.dir/cmake_clean.cmake
 .PHONY : uas_turtle/CMakeFiles/turtle_position_service.dir/clean
 
 uas_turtle/CMakeFiles/turtle_position_service.dir/depend:
-	cd /home/tyler/drone_controller/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tyler/drone_controller/src /home/tyler/drone_controller/src/uas_turtle /home/tyler/drone_controller/build /home/tyler/drone_controller/build/uas_turtle /home/tyler/drone_controller/build/uas_turtle/CMakeFiles/turtle_position_service.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tyler/ground-system/UASDrone/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tyler/ground-system/UASDrone/src /home/tyler/ground-system/UASDrone/src/uas_turtle /home/tyler/ground-system/UASDrone/build /home/tyler/ground-system/UASDrone/build/uas_turtle /home/tyler/ground-system/UASDrone/build/uas_turtle/CMakeFiles/turtle_position_service.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : uas_turtle/CMakeFiles/turtle_position_service.dir/depend
 

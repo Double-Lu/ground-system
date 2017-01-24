@@ -7,6 +7,7 @@ echo "creating folders and cloning repo..."
 # git clone https://github.com/UAS-Ground/ground-system.git
 # mv ground-system src
 
+export PROJECT_ROOT=$(pwd)
 export UAS_GROUND_PATH=$(pwd)/UASGroundSystem
 export HOME_PATH=$(cd ~ && pwd)
 
@@ -73,10 +74,50 @@ make -j 5
 sudo make install
 
 # Fill out UASGround.pro with correct info
-cd $UAS_GROUND_PATH
-if [ -f $UAS_GROUND_PATH/UASGroundSystem.pro ]
+
+cd $PROJECT_ROOT
+
+if [ -d UASDrone/build ]
 	then
-		rm $UAS_GROUND_PATH/UASGroundSystem.pro
+		rm -rf UASDrone/build
 fi
+
+
+if [ -d UASDrone/devel ]
+	then
+		rm -rf UASDrone/build
+fi
+
+
+if [ -f UASDrone/src/CMakeLists.txt ]
+	then
+		rm UASDrone/src/CMakeLists.txt
+fi
+
+if [ -f UASGroundSystem/UASGroundSystem ]
+	then
+		rm UASGroundSystem/UASGroundSystem 
+fi
+
+
+if [ -f UASGroundSystem/UASGroundSystem.pro ]
+	then
+		rm UASGroundSystem/UASGroundSystem.pro
+fi
+
 python configure_qt.py $HOME
-source UASDrone/rebuild.sh
+cd UASDrone/
+source rebuild.sh
+cd ../UASGroundSystem
+make clean
+
+
+if [ -f UASGroundSystem/Makefile ]
+	then
+		rm UASGroundSystem/Makefile 
+fi
+
+$HOME/Qt/5.7/gcc_64/bin/qmake
+make
+cd ..
+

@@ -1,11 +1,15 @@
+
 QT += qml quick opengl multimedia
 
 CONFIG += c++11
 
-SOURCES += main.cpp \
-    roscontroller.cpp
+SOURCES += main.cpp     roscontroller.cpp
+#    cqtopencvviewergl.cpp #    listener.cpp
 
 RESOURCES += qml.qrc
+
+
+#include(/home/tyler/Downloads/livecv/api/pro/lcv.pro)
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -29,6 +33,9 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+HEADERS +=     roscontroller.h
+
+
 OPENCV_PATH = /home/tyler/OpenCV
 
 LIBS_PATH = /home/tyler/OpenCV/build/lib
@@ -48,5 +55,3 @@ message("Libraries: $$LIBS")
 
 DISTFILES +=     indicator.png
 
-HEADERS += \
-    roscontroller.h

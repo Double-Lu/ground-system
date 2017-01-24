@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/tyler/drone_controller/src/uas_turtle/src/turtle_position_service.cpp
+/home/tyler/ground-system/UASDrone/src/uas_turtle/src/turtle_position_service.cpp
 ros/ros.h
-/home/tyler/drone_controller/src/uas_turtle/src/ros/ros.h
+/home/tyler/ground-system/UASDrone/src/uas_turtle/src/ros/ros.h
 geometry_msgs/Pose2D.h
 -
 turtlesim/Pose.h
@@ -50,9 +50,9 @@ gazebo_msgs/SetModelState.h
 gazebo_msgs/GetModelState.h
 -
 turtle_position_service.h
-/home/tyler/drone_controller/src/uas_turtle/src/turtle_position_service.h
+/home/tyler/ground-system/UASDrone/src/uas_turtle/src/turtle_position_service.h
 
-/home/tyler/drone_controller/src/uas_turtle/src/turtle_position_service.h
+/home/tyler/ground-system/UASDrone/src/uas_turtle/src/turtle_position_service.h
 stdio.h
 -
 stdlib.h
