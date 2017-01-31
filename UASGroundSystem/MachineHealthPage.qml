@@ -180,9 +180,9 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         onClicked: {
 
-                                console.log("User clicked the Payload 1's button");
-                                var component = Qt.createComponent("PayloadHealth.qml");
-                                var plhView = component.createObject(rootLayout, {"x": 600, "y": 400});
+                            console.log("User clicked the Payload 1's button");
+                            var component = Qt.createComponent("PayloadHealth.qml");
+                            var plhView = component.createObject(rootLayout, {"x": 600, "y": 400});
                         }
                     }
 
@@ -211,6 +211,11 @@ Item {
                         text: qsTr("Payload 3 Health")
                         font.pointSize: 10
                         anchors.horizontalCenter: parent.horizontalCenter
+                        onClicked: {
+                            console.log("User clicked the Payload 3's button");
+
+                            ROSController.runGraph();
+                        }
                     }
 
                 }

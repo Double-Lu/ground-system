@@ -249,9 +249,8 @@ int run_server(ros::ServiceClient * client)
 
                         }
 
-                        /*
-                            vel_msg.angular.z = vel_msg.angular.z > 0 ? 0.0 : 4.0;
-                        */
+                        
+                       
 
                         new_x_goal = atof(comp_strs[0].c_str());
                         new_y_goal = atof(comp_strs[1].c_str());
@@ -262,7 +261,8 @@ int run_server(ros::ServiceClient * client)
 
                         sendModelState(client, &state);
 
-
+	                vel_msg.angular.z = vel_msg.angular.z > 0 ? 0.0 : 4.0;
+ 		
                         
                         printf("I have a new_x_goal %f and a new_y_goal: %f, new_z_goal: %f\n", new_x_goal, new_y_goal, new_z_goal);
                         printf("I have a prev_x %f and a prev_y: %f and a prev_theta %f\n", prev_x, prev_y, prev_theta);
@@ -305,7 +305,7 @@ void positionReported(const turtlesim::PoseConstPtr& msg){
     if(msg->x != prev_x || msg->y != prev_y || msg->theta != prev_theta){
 
         std::string position = myString.str();
-        //printf("looking at message: %s\n", position.c_str());
+        printf("looking at message: %s\n", position.c_str());
 
         if ((numbytes = sendto(sockfd, position.c_str(), strlen(position.c_str()), 0,
                  p->ai_addr, p->ai_addrlen)) == -1) {

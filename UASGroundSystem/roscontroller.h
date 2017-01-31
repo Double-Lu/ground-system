@@ -23,6 +23,7 @@ public:
     void readPendingDatagrams();
     void startListening();
     void myFunc();
+    Q_INVOKABLE void runGraph();
 
 
 private:

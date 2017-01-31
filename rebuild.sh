@@ -19,18 +19,19 @@ if [ -f UASDrone/src/CMakeLists.txt ]
 		rm UASDrone/src/CMakeLists.txt
 fi
 
-if [ -f UASGroundSystem/UASGroundSystem ]
-	then
-		rm UASGroundSystem/UASGroundSystem 
-fi
-
 
 if [ -f UASGroundSystem/UASGroundSystem.pro ]
 	then
 		rm UASGroundSystem/UASGroundSystem.pro
 fi
 
+if [ -f UASGroundSystem/roscontroller.cpp ]
+	then
+		rm UASGroundSystem/roscontroller.cpp
+fi
+
 python configure_qt.py $HOME
+
 cd UASDrone/
 source rebuild.sh
 cd ../UASGroundSystem
@@ -42,8 +43,19 @@ if [ -f UASGroundSystem/Makefile ]
 		rm UASGroundSystem/Makefile 
 fi
 
+if [ -f graph/Makefile ]
+	then
+		rm graph/Makefile 
+fi
+
 $HOME/Qt/5.7/gcc_64/bin/qmake
 make
 cd ..
 
+cd graph/
+make clean
+
+$HOME/Qt/5.7/gcc_64/bin/qmake
+make
+cd ..
 
